@@ -17,21 +17,21 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span>ID</span></th>
-                    <th><span>First Name</span></th>
-                    <th><span>Last Name</span></th>
-                    <th><span>Email</span></th>
-                    <th><span>Phone Number</span></th>
-                    <th><span>Hire Date</span></th>
-                    <th><span>Salary</span></th>
-                    <th><span>Commission Pct</span></th>
-                    <th><span>Department</span></th>
-                    <th><span>Manager</span></th>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="firstName"><span>First Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastName"><span>Last Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phoneNumber"><span>Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hireDate"><span>Hire Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salary"><span>Salary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="commissionPct"><span>Commission Pct</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="department.id"><span>Department</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="manager.id"><span>Manager</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="employee in vm.employees track by employee.id">
                     <td><a ui-sref="employee-detail({id:employee.id})">{{employee.id}}</a></td>
                     <td>{{employee.firstName}}</td>
