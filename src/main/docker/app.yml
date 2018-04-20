@@ -1,0 +1,14 @@
+version: '2'
+services:
+    testpagination-app:
+        image: testpagination
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://testpagination-mysql:3306/testpagination?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    testpagination-mysql:
+        extends:
+            file: mysql.yml
+            service: testpagination-mysql
