@@ -101,6 +101,6 @@ relationship OneToOne {
 }
 
 // Set pagination options
-paginate JobHistory, Employee with infinite-scroll
-paginate Job with pagination
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
 
